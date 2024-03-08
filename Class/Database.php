@@ -9,7 +9,7 @@ class Database
     private $host = "localhost";
     private $databaseName = "advanced_database";
     private $password = "";
-    private $conn;
+    protected $conn;
 
     /* This is the constructor method of the class. It is called automatically 
         when an object of the class is created.

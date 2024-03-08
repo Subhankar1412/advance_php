@@ -1,16 +1,8 @@
 <?php
 require_once 'Database.php';
 
-class User
+class User extends Database
 {
-    private $conn;
-
-    public function __construct()
-    {
-        $db = new Database();
-        $this->conn = $db->getConnection();
-    }
-
     public function createUser($username, $email, $password)
     {
         $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
@@ -19,6 +11,7 @@ class User
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
+
         return $this->conn->lastInsertId(); // Return the ID of the inserted record
     }
 

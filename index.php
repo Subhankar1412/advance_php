@@ -10,7 +10,7 @@ foreach ($users as $user) {
 }
 
 // Example of fetching a user by ID
-$userId = 1;
+$userId = 6;
 $userData = $user->getUserById($userId);
 echo "Name: " . $userData['name'] . ", Email: " . $userData['email'];
 
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 // Assume these are the updated values obtained from a form or elsewhere
-$id = 1;
+$id = 2;
 $username = "new_username";
 $email = "new_email@example.com";
 $result = $user->updateUser($id, $username, $email);
