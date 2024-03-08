@@ -1,0 +1,282 @@
+=================================== Class ========================================
+In object-oriented programming (OOP), a class is a blueprint or template for creating objects. It defines the attributes (properties) and behaviors (methods) that all objects of that class will have.
+
+Here's a breakdown of key components of a class:
+
+    1. Attributes (Properties): Attributes represent the data associated with an object. They define the characteristics or state of the object. For example, in a Car class, attributes might include color, model, year, etc.
+
+    2. Methods (Functions): Methods define the behaviors or actions that objects of the class can perform. They operate on the object's attributes and can modify the object's state. For example, in a Car class, methods might include start(), accelerate(), brake(), etc.
+
+    3. Constructor: The constructor is a special method that is called when an object of the class is created. It initializes the object's attributes and performs any necessary setup. In many programming languages, the constructor has the same name as the class. For example, in PHP, it's the __construct() method.
+
+    4. Instance: An instance is a specific object created from a class. It represents a single occurrence of the class and has its own set of attribute values. For example, if Car is a class, a specific car object might be an instance of that class.
+
+    5. Inheritance: Inheritance is a feature of OOP that allows a class (subclass or child class) to inherit attributes and methods from another class (superclass or parent class). This promotes code reuse and facilitates the creation of specialized classes.
+
+    6. Encapsulation: Encapsulation is the principle of bundling the data (attributes) and methods (behaviors) that operate on the data into a single unit (class). It hides the internal state of an object from the outside world and only exposes a public interface for interacting with the object.
+
+    7. Abstraction: Abstraction is the process of simplifying complex systems by focusing on the essential features while hiding unnecessary details. In OOP, classes provide abstraction by defining a clear interface (methods) for interacting with objects without revealing the internal implementation.
+
+    class Car {
+        // Attributes
+        public $color;
+        public $model;
+        public $year;
+
+        // Constructor
+        public function __construct($color, $model, $year) {
+            $this->color = $color;
+            $this->model = $model;
+            $this->year = $year;
+        }
+
+        // Method
+        public function start() {
+            echo "The car is starting...";
+        }
+    }
+
+    // Creating an instance of the Car class
+    $myCar = new Car("Red", "Toyota", 2022);
+
+In this example, Car is a class with attributes ($color, $model, $year), a constructor (__construct()), and a method (start()). An instance of the Car class ($myCar) is created with specific attribute values using the constructor.
+
+=================================== SQL injection ================================
+In object-oriented programming (OOP), a class is a blueprint for creating objects (instances) that encapsulate data (attributes or properties) and behavior (methods or functions). A class defines the structure and behavior of objects of that type.
+
+Here's a breakdown:
+
+    1. Blueprint: A class serves as a blueprint or template for creating objects. It defines the attributes and methods that each object of that class will have.
+
+    2. Attributes/Properties: These are the data members of a class, representing the state or characteristics of objects created from that class.
+
+    3. Methods/Functions: These are the functions defined within a class that define the behavior of objects. Methods can perform actions, manipulate data, or provide functionality specific to the class.
+
+    4. Encapsulation: Classes encapsulate data and behavior within a single unit, allowing for better organization, modularity, and reusability of code.
+
+    5. Inheritance: Classes can inherit attributes and methods from other classes, allowing for code reuse and the creation of hierarchical relationships between classes.
+
+    6. Polymorphism: This is the ability of objects of different classes to be treated as objects of a common superclass. Polymorphism allows for flexibility in programming and facilitates code reuse.
+
+An object, on the other hand, is an instance of a class. It represents a specific realization of the class blueprint, with its own unique state (attribute values) and behavior (method implementations). Objects interact with each other and with the system by invoking methods and accessing attributes defined in their class.
+
+In summary, a class defines the structure and behavior of objects, while an object is an instance of a class that encapsulates data and behavior.
+
+=================================== SQL injection ================================
+SQL injection is a type of security vulnerability that occurs when an attacker is able to manipulate SQL queries in an application's input fields. This can allow the attacker to execute arbitrary SQL commands and gain unauthorized access to the application's database.
+
+Here's how SQL injection works:
+
+    1. Unsanitized Input: The application takes user input (such as through form fields) and directly incorporates it into SQL queries without proper validation or sanitization.
+
+    2. Malicious Input: An attacker submits malicious input, typically in the form of SQL commands, as part of the input fields.
+
+    3. Injection: The attacker's input is concatenated or interpolated into the SQL query, effectively altering its intended behavior.
+
+    4. Execution: The manipulated SQL query is executed by the application's database engine, leading to unintended consequences such as data theft, data modification, or even database server compromise.
+
+For example, consider a login form where the application constructs a SQL query to check the entered username and password:
+
+    SELECT * FROM users WHERE username='$username' AND password='$password'
+
+If an attacker enters a malicious username like admin' OR '1'='1, the resulting SQL query would become:
+
+    SELECT * FROM users WHERE username='admin' OR '1'='1' AND password='$password'
+
+In this case, the condition '1'='1' always evaluates to true, effectively bypassing the password check and allowing the attacker to log in as the admin user without knowing the password.
+
+To prevent SQL injection, developers should use parameterized queries (prepared statements) or ORM frameworks that automatically handle input sanitization and parameter binding. These approaches ensure that user input is treated as data rather than executable SQL commands, thereby thwarting SQL injection attacks.
+
+==================================== PDO Object ==================================
+PDO stands for "PHP Data Objects." It's a PHP extension that provides a consistent interface for accessing databases in PHP. PDO offers a flexible, object-oriented approach to interacting with databases, making it easier to work with different database management systems (DBMS) without changing much of the code.
+
+Here's what PDO provides:
+
+    1. Database Abstraction:
+
+        PDO provides a uniform interface to work with different database systems, such as MySQL, PostgreSQL, SQLite, SQL Server, and more.
+        Developers can write database code using PDO, and the same code can be used with different databases by changing only the connection parameters.
+
+    2. Prepared Statements:
+        PDO supports prepared statements, which allow you to execute the same SQL statements repeatedly with different parameters.
+        Prepared statements help prevent SQL injection attacks and improve performance by enabling the database server to optimize the execution of queries.
+    
+    3. Parameter Binding:
+        PDO supports parameter binding, which allows you to bind PHP variables to SQL query parameters.
+        Parameter binding helps prevent SQL injection attacks by automatically escaping special characters in the input data.
+    
+    4. Error Handling:
+        PDO provides consistent error handling through exceptions. Errors related to database operations can be caught and handled using try-catch blocks.
+    
+    5. Transactions:
+        PDO supports transactions, allowing you to group multiple database operations into a single atomic unit. Transactions ensure data integrity by either committing all changes or rolling back to the previous state if an error occurs.
+Overall, PDO simplifies database programming in PHP by providing a versatile and secure way to interact with databases, making it a preferred choice for many PHP developers.
+
+============================ public private protected ==================================
+1. Private:
+    A private member is accessible only within the class in which it is declared. It cannot be accessed from outside the class, not even from its child classes.
+    Private members are typically used to hide implementation details and ensure encapsulation.
+    
+    
+    class Example {
+        private $privateProperty;
+
+        private function privateMethod() {
+            return "Private method";
+        }
+
+        public function accessPrivate() {
+            // Accessing private property
+            $this->privateProperty = "Private property value";
+
+            // Accessing private method
+            return $this->privateMethod();
+        }
+    }
+
+    $obj = new Example();
+    echo $obj->accessPrivate(); // Output: Private method
+
+2. Public:
+    A public member is accessible from anywhere outside the class, including other classes and instances of the class.
+    Public members are used for properties and methods that need to be accessed and manipulated from outside the class.
+
+    class Example {
+        public $publicProperty;
+
+        public function publicMethod() {
+            return "Public method";
+        }
+    }
+
+    $obj = new Example();
+    $obj->publicProperty = "Public property value";
+    echo $obj->publicMethod(); // Output: Public method
+
+3. Protected:
+    A protected member is accessible within the class in which it is declared and its subclasses (child classes).
+    Protected members cannot be accessed from outside the class or its subclasses.
+
+    class ParentClass {
+        protected $protectedProperty;
+
+        protected function protectedMethod() {
+            return "Protected method";
+        }
+    }
+
+    class ChildClass extends ParentClass {
+        public function accessProtected() {
+            // Accessing protected property
+            $this->protectedProperty = "Protected property value";
+
+            // Accessing protected method
+            return $this->protectedMethod();
+        }
+    }
+
+    $obj = new ChildClass();
+    echo $obj->accessProtected(); // Output: Protected method
+
+In summary:
+    Use private when you want to restrict access to class internals.
+    Use public when you want unrestricted access to properties and methods.
+    Use protected when you want restricted access within the class and its subclasses for inheritance purposes.
+
+
+========================================= extends =======================================
+In object-oriented programming, the extends keyword is used to establish inheritance between classes. When one class extends another class, it inherits all the properties and methods of the parent class. The class that is being extended is called the parent class (or superclass), and the class that is extending it is called the child class (or subclass).
+
+Here's a breakdown of what extends means:
+
+    1. Inheritance:
+        By using extends, a subclass inherits all the properties and methods (except private members) of the superclass.
+        This allows for code reuse and facilitates the creation of a hierarchy of classes where common behavior can be defined in a superclass and specialized behavior can be implemented in subclasses.
+    
+    2. Access to Parent Members:
+        Subclasses have access to public and protected members (properties and methods) of the parent class, which enables them to reuse and extend the functionality provided by the parent class.
+    
+    3. Adding New Functionality:
+        Child classes can add new properties and methods or override existing ones inherited from the parent class. This allows for customization and specialization of behavior in subclasses.
+    
+    Here's a simple example to illustrate the concept:
+
+    class Animal {
+        protected $species;
+
+        public function __construct($species) {
+            $this->species = $species;
+        }
+
+        public function sound() {
+            return "Unknown sound";
+        }
+    }
+
+    class Dog extends Animal {
+        public function sound() {
+            return "Woof!";
+        }
+
+        public function fetch() {
+            return "Fetch the ball!";
+        }
+    }
+
+    // Creating an instance of the child class
+    $dog = new Dog("Canine");
+
+    // Accessing inherited property and method
+    echo "Species: " . $dog->species . "\n"; // Output: Canine
+    echo "Sound: " . $dog->sound() . "\n";   // Output: Woof!
+
+    // Accessing new method defined in the child class
+    echo $dog->fetch(); // Output: Fetch the ball!
+
+In this example, the Dog class extends the Animal class. As a result, Dog inherits the $species property and the sound() method from Animal. The Dog class also defines its own method fetch(), which is not present in the Animal class.
+
+============================================ Bind Params =========================================
+In PHP's PDO (PHP Data Objects), bindParam is a method used to bind a PHP variable to a parameter in a prepared statement. This is particularly useful for preventing SQL injection attacks and for handling data types correctly.
+
+Here's an example of how bindParam works:
+        <?php
+            // Establish a database connection
+            $dsn = "mysql:host=localhost;dbname=my_database";
+            $username = "username";
+            $password = "password";
+
+            try {
+                $conn = new PDO($dsn, $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                echo "Connection failed: " . $e->getMessage();
+            }
+
+            // Prepare a SQL statement with a placeholder
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
+
+            // Bind a PHP variable to the placeholder
+            $username = "john_doe";
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+
+            // Execute the prepared statement
+            $stmt->execute();
+
+            // Fetch the result
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Output the result
+            print_r($result);
+        ?>
+
+In this example:
+    We establish a connection to the database using PDO.
+    We prepare a SQL statement with a placeholder :username.
+    We bind a PHP variable $username to the placeholder using bindParam. We also specify the data type of the variable using PDO::PARAM_STR to ensure proper handling of the value.
+    We execute the prepared statement.
+    We fetch the result of the query using fetchAll.
+    Finally, we output the result.
+
+By using bindParam, the value of $username is bound to the placeholder in the SQL statement. This not only prevents SQL injection attacks but also ensures that the value is treated as a string (due to PDO::PARAM_STR), regardless of its actual data type in PHP.
+
+
